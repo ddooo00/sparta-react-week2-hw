@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../redux/modules/todo.js";
 
-const Search = () => {
+function Search() {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
@@ -26,7 +30,7 @@ const Search = () => {
       <StAddButton>추가하기</StAddButton>
     </StAddForm>
   );
-};
+}
 
 export default Search;
 
