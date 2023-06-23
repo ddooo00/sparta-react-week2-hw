@@ -34,13 +34,14 @@ const initialState = {
       body: "리액트를 배워봅시다",
       isDone: false,
     },
+    ,
+    {
+      id: "2",
+      title: "리덕스",
+      body: "리덕스를 배워봅시다",
+      isDone: false,
+    },
   ],
-  todo: {
-    id: "2",
-    title: "리덕스",
-    body: "리덕스를 배워봅시다",
-    isDone: false,
-  },
 };
 
 // 리듀서
