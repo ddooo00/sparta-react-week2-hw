@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../redux/modules/todo";
+
 function Search() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState(" ");
@@ -17,11 +18,13 @@ function Search() {
   const bodyChangeHandler = (event) => {
     setBody(event.target.value);
   };
-
+  //addTodo
   const addTodoHandler = (e) => {
     e.preventDefault();
     console.log("버튼눌림");
-    dispatch(addTodo(null));
+    dispatch(addTodo({ title, body }));
+    setTitle("");
+    setBody("");
   };
 
   return (

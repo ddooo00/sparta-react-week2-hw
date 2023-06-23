@@ -47,10 +47,11 @@ const initialState = {
 const todo = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO: {
+      const { title, body } = action.payload;
       const tempNewTodo = {
-        id: "3",
-        title: "어쩌구",
-        body: "저쩌구",
+        id: state.todos.length + 1,
+        title: title,
+        body: body,
         isDone: false,
       };
       let currentState = [...state.todos];
