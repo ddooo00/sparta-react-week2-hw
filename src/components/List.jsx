@@ -23,8 +23,12 @@ function List() {
           <StListBox key={todo.id}>
             <h3>{todo.title}</h3>
             <p>{todo.body}</p>
-            <button>완료</button>
-            <button onClick={() => deleteTodoHandler(todo.id)}>삭제</button>
+            <StButtonBox>
+              <StComCanButton>완료</StComCanButton>
+              <StDeleteButton onClick={() => deleteTodoHandler(todo.id)}>
+                삭제
+              </StDeleteButton>
+            </StButtonBox>
           </StListBox>
         ))}
       </StInBox>
@@ -35,8 +39,10 @@ function List() {
           <StListBox key={todo.id}>
             <h3>{todo.title}</h3>
             <p>{todo.body}</p>
-            <button>취소</button>
-            <button>삭제</button>
+            <StButtonBox>
+              <StComCanButton>취소</StComCanButton>
+              <StDeleteButton>삭제</StDeleteButton>
+            </StButtonBox>
           </StListBox>
         ))}
       </StInBox>
@@ -63,4 +69,34 @@ const StListBox = styled.div`
   border: 4px solid teal;
   border-radius: 12px;
   padding: 12px 24px 24px 24px;
+`;
+
+const StButtonBox = styled.div`
+  display: flex;
+`;
+
+const StDeleteButton = styled.div`
+  background-color: #fff;
+  border: 3px solid red;
+  border-radius: 8px;
+  margin-right: 10px;
+  cursor: pointer;
+  height: 30px;
+  width: 50%;
+  margin-top: 25px;
+  text-align: center;
+  padding-top: 10px;
+`;
+
+const StComCanButton = styled.div`
+  background-color: #fff;
+  border: 3px solid purple;
+  border-radius: 8px;
+  margin-right: 10px;
+  cursor: pointer;
+  height: 30px;
+  width: 50%;
+  margin-top: 25px;
+  text-align: center;
+  padding-top: 10px;
 `;
