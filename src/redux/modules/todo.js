@@ -34,7 +34,6 @@ const initialState = {
       body: "리액트를 배워봅시다",
       isDone: false,
     },
-    ,
     {
       id: "2",
       title: "리덕스",
@@ -47,11 +46,19 @@ const initialState = {
 // 리듀서
 const todo = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_TODO:
-      return {
-        ...state,
-        todos: [...state.todos, action.payload],
+    case ADD_TODO: {
+      const tempNewTodo = {
+        id: "3",
+        title: "어쩌구",
+        body: "저쩌구",
+        isDone: false,
       };
+      let currentState = [...state.todos];
+      currentState.push(tempNewTodo);
+      return {
+        todos: currentState,
+      };
+    }
 
     case DELETE_TODO:
       return {

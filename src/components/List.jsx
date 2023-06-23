@@ -4,13 +4,15 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 
 function List() {
-  const todos = useSelector((state) => {
+  let todos = [];
+  todos = useSelector((state) => {
     return state.todo.todos;
   });
   console.log(todos);
 
   return (
     <StBox>
+      <h2>Working...🔥</h2>
       {todos.map((todo) => (
         <div>
           <h3>{todo.title}</h3>

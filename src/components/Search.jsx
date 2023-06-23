@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useSelector } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-
+import { addTodo } from "../redux/modules/todo";
 function Search() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState(" ");
@@ -19,6 +18,12 @@ function Search() {
     setBody(event.target.value);
   };
 
+  const addTodoHandler = (e) => {
+    e.preventDefault();
+    console.log("버튼눌림");
+    dispatch(addTodo(null));
+  };
+
   return (
     <StAddForm>
       <StAddBox>
@@ -27,7 +32,7 @@ function Search() {
         <StFormTitle>내용</StFormTitle>
         <StAddInput type="text" value={body} onChange={bodyChangeHandler} />
       </StAddBox>
-      <StAddButton>추가하기</StAddButton>
+      <StAddButton onClick={addTodoHandler}>추가하기</StAddButton>
     </StAddForm>
   );
 }
