@@ -13,12 +13,41 @@ function List() {
   return (
     <StBox>
       <h2>Working...🔥</h2>
-      {todos.map((todo) => (
-        <div>
-          <h3>{todo.title}</h3>
-          <p>{todo.body}</p>
-        </div>
-      ))}
+      <div style={{ gap: "12px", display: "flex", flexWrap: "wrap" }}>
+        {todos.map((todo) => (
+          <div
+            style={{
+              marginBottom: "10px",
+              width: "250px",
+              height: "160px",
+              border: "4px solid teal",
+              borderRadius: "12px",
+              padding: "12px 24px 24px 24px",
+            }}
+          >
+            <h3>{todo.title}</h3>
+            <p>{todo.body}</p>
+          </div>
+        ))}
+      </div>
+      <h2>Done...🎉</h2>
+      <div style={{ gap: "12px", display: "flex", flexWrap: "wrap" }}>
+        {todos.map((todo) => (
+          <div
+            style={{
+              marginBottom: "10px",
+              width: "250px",
+              height: "160px",
+              border: "4px solid teal",
+              borderRadius: "12px",
+              padding: "12px 24px 24px 24px",
+            }}
+          >
+            <h3>{todo.title}</h3>
+            <p>{todo.body}</p>
+          </div>
+        ))}
+      </div>
     </StBox>
   );
 }
@@ -26,5 +55,5 @@ function List() {
 export default List;
 
 const StBox = styled.div`
-  border: 1px solid black;
+  margin-top: 20px;
 `;
