@@ -3,12 +3,11 @@ import { useSelector } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../redux/modules/todo.js";
 
 function Search() {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState(" todoList");
-  const [body, setBody] = useState(" todoList");
+  const [title, setTitle] = useState(" ");
+  const [body, setBody] = useState(" ");
 
   //onChange title
   const titleChangeHandler = (event) => {
