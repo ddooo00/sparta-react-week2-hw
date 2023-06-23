@@ -18,10 +18,10 @@ export const deleteTodo = (payload) => {
 };
 
 // isDone 변경하는 action
-export const toggleStatusTodo = (payload) => {
+export const toggleStatusTodo = (id, isDone) => {
   return {
     type: TOGGLE_STATUS_TODO,
-    payload,
+    payload: { id, isDone },
   };
 };
 
@@ -34,12 +34,19 @@ const initialState = {
       body: "리액트를 배워봅시다",
       isDone: false,
     },
+    {
+      id: "2",
+      title: "리덕스",
+      body: "리덕스를 배워봅시다",
+      isDone: true,
+    },
   ],
 };
 
 // 리듀서
 const todo = (state = initialState, action) => {
   switch (action.type) {
+    //추가
     case ADD_TODO: {
       const { title, body } = action.payload;
       const tempNewTodo = {
@@ -54,13 +61,14 @@ const todo = (state = initialState, action) => {
         todos: currentState,
       };
     }
-
+    //삭제
     case DELETE_TODO:
       return {
         ...state,
         todos: state.todos.filter((todo) => todo.id !== action.payload.id),
       };
 
+    //isDOne
     case TOGGLE_STATUS_TODO:
       return {
         ...state,
@@ -68,7 +76,7 @@ const todo = (state = initialState, action) => {
           if (todo.id === action.payload.id) {
             return {
               ...todo,
-              isDone: !todo.isDone,
+              isDone: action.payload.isDone,
             };
           } else {
             return todo;
