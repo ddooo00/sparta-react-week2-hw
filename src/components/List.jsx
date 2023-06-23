@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTodo } from "../redux/modules/todo";
 import { toggleStatusTodo } from "../redux/modules/todo";
+import { Link } from "react-router-dom";
 
 function List() {
   const todos = useSelector((state) => state.todo.todos);
@@ -27,6 +28,7 @@ function List() {
 
             return (
               <StListBox key={todo.id}>
+                <Link to={`/List/todo.id`}>상세보기</Link>
                 <h3>{todo.title}</h3>
                 <p>{todo.body}</p>
                 <StButtonBox>
@@ -55,6 +57,7 @@ function List() {
 
             return (
               <StListBox key={todo.id}>
+                <Link to={`/List/todo.id`}>상세보기</Link>
                 <h3>{todo.title}</h3>
                 <p>{todo.body}</p>
                 <StButtonBox>
@@ -110,7 +113,7 @@ const StDeleteButton = styled.div`
   cursor: pointer;
   height: 30px;
   width: 50%;
-  margin-top: 25px;
+  margin-top: 10px;
   text-align: center;
   padding-top: 10px;
 `;
@@ -123,7 +126,7 @@ const StComCanButton = styled.div`
   cursor: pointer;
   height: 30px;
   width: 50%;
-  margin-top: 25px;
+  margin-top: 10px;
   text-align: center;
   padding-top: 10px;
 `;

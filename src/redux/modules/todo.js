@@ -61,6 +61,7 @@ const todo = (state = initialState, action) => {
         todos: currentState,
       };
     }
+
     //삭제
     case DELETE_TODO:
       return {
