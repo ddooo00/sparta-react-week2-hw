@@ -8,12 +8,10 @@ function List() {
   const todos = useSelector((state) => state.todo.todos);
   const dispatch = useDispatch();
 
-  // 삭제
   const deleteTodoHandler = (id) => {
     dispatch(deleteTodo({ id }));
   };
 
-  // 완료 취소
   const toggleTodoStatusHandler = (id, isDone) => {
     dispatch(toggleStatusTodo(id, !isDone));
   };
@@ -24,54 +22,56 @@ function List() {
       <StInBox>
         {todos
           .filter((todo) => !todo.isDone)
-          .map(
-            (todo) =>
-              !todo.isDone && (
-                <StListBox key={todo.id}>
-                  <h3>{todo.title}</h3>
-                  <p>{todo.body}</p>
-                  <StButtonBox>
-                    <StComCanButton
-                      onClick={() =>
-                        toggleTodoStatusHandler(todo.id, todo.isDone)
-                      }
-                    >
-                      완료
-                    </StComCanButton>
-                    <StDeleteButton onClick={() => deleteTodoHandler(todo.id)}>
-                      삭제
-                    </StDeleteButton>
-                  </StButtonBox>
-                </StListBox>
-              )
-          )}
+          .map((todo) => {
+            if (todo.isDone) return null;
+
+            return (
+              <StListBox key={todo.id}>
+                <h3>{todo.title}</h3>
+                <p>{todo.body}</p>
+                <StButtonBox>
+                  <StComCanButton
+                    onClick={() =>
+                      toggleTodoStatusHandler(todo.id, todo.isDone)
+                    }
+                  >
+                    완료
+                  </StComCanButton>
+                  <StDeleteButton onClick={() => deleteTodoHandler(todo.id)}>
+                    삭제
+                  </StDeleteButton>
+                </StButtonBox>
+              </StListBox>
+            );
+          })}
       </StInBox>
 
       <h2>Done...🎉</h2>
       <StInBox>
         {todos
           .filter((todo) => todo.isDone)
-          .map(
-            (todo) =>
-              todo.isDone && (
-                <StListBox key={todo.id}>
-                  <h3>{todo.title}</h3>
-                  <p>{todo.body}</p>
-                  <StButtonBox>
-                    <StComCanButton
-                      onClick={() =>
-                        toggleTodoStatusHandler(todo.id, todo.isDone)
-                      }
-                    >
-                      취소
-                    </StComCanButton>
-                    <StDeleteButton onClick={() => deleteTodoHandler(todo.id)}>
-                      삭제
-                    </StDeleteButton>
-                  </StButtonBox>
-                </StListBox>
-              )
-          )}
+          .map((todo) => {
+            if (!todo.isDone) return null;
+
+            return (
+              <StListBox key={todo.id}>
+                <h3>{todo.title}</h3>
+                <p>{todo.body}</p>
+                <StButtonBox>
+                  <StComCanButton
+                    onClick={() =>
+                      toggleTodoStatusHandler(todo.id, todo.isDone)
+                    }
+                  >
+                    취소
+                  </StComCanButton>
+                  <StDeleteButton onClick={() => deleteTodoHandler(todo.id)}>
+                    삭제
+                  </StDeleteButton>
+                </StButtonBox>
+              </StListBox>
+            );
+          })}
       </StInBox>
     </StOuterBox>
   );
