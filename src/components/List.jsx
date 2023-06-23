@@ -9,10 +9,10 @@ function List() {
     return state.todo.todos;
   });
 
-  const dispatch = useDispatch(); // useDispatch 훅을 사용하여 dispatch 함수를 가져옵니다.
+  const dispatch = useDispatch();
 
   const deleteTodoHandler = (id) => {
-    dispatch(deleteTodo({ id })); // 삭제할 항목의 id를 전달합니다.
+    dispatch(deleteTodo({ id }));
   };
 
   return (
